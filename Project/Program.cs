@@ -1,6 +1,6 @@
-﻿    using System;
+using System;
 
-    class Program
+  class Program
     {
     static void Main()
     {
@@ -20,11 +20,12 @@
         Console.WriteLine("Enter coordinate y of dot C: ");
         double yC = Convert.ToDouble(Console.ReadLine());
 
-
+        
         double side1 = Math.Sqrt(Math.Pow(xB - xA, 2) + Math.Pow(yB - yA, 2));
         double side2 = Math.Sqrt(Math.Pow(xC-xB,2) + Math.Pow(yC-yB,2));
         double side3 = Math.Sqrt(Math.Pow(xC-xA,2) + Math.Pow(yC-yA,2));
-
+ 
+        
         Console.WriteLine($"Length of AB is:  \'{side1}\'");
         Console.WriteLine($"Length of BC is:  \'{side2}\'");
         Console.WriteLine($"Length of AC is:  \'{side3}\'");
@@ -39,7 +40,7 @@
             Console.WriteLine("Triangle is NOT \'Equilateral\'");
         }
 
-        
+
         if (side1 == side2 || side2 == side3 || side3 == side1)
         {
             Console.WriteLine("Triangle is \'Isosceles\'");
@@ -48,9 +49,11 @@
         {
             Console.WriteLine("Triangle is NOT \'Isosceles\'");
         }
+        
 
+        double delta = 1e-15;
 
-        if (Math.Pow(side1,2) + Math.Pow(side2, 2) == Math.Pow(side3, 2) || Math.Pow(side2, 2) + Math.Pow(side3, 2) == Math.Pow(side1, 2) || Math.Pow(side3, 2) + Math.Pow(side1, 2) == Math.Pow(side2, 2))
+        if (Math.Pow(side1,2) - (Math.Pow(side2, 2) + Math.Pow(side3, 2) ) <= delta || Math.Pow(side2, 2) - (Math.Pow(side3, 2) + Math.Pow(side1, 2)) <= delta || Math.Pow(side3, 2) - (Math.Pow(side1, 2) + Math.Pow(side2, 2)) <= delta) 
         {
             Console.WriteLine("Triangle is \'Right\'");
         }
@@ -59,6 +62,7 @@
             Console.WriteLine("Triangle is NOT \'Right\'");
         }
 
+        
         double perimeter = side1 + side2 + side3;
         Console.WriteLine($"Perimeter is: \'{perimeter}\' ");
 
